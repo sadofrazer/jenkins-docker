@@ -1,4 +1,4 @@
-FROM centos/systemd
+FROM centos:7
 LABEL Name="Frazer SADO"
 LABEL email="sadofrazer@yahoo.fr"
 #Install Dependencies
@@ -19,7 +19,7 @@ RUN rm -rf /lib/systemd/system/multi-user.target.wants/ \
     && rm -f /lib/systemd/system/sockets.target.wants/initctl \
     && rm -rf /lib/systemd/system/basic.target.wants/ \
     && rm -f /lib/systemd/system/anaconda.target.wants/*
-    
+
 VOLUME [ “/sys/fs/cgroup” ]
 
 RUN mkdir /jenkins
