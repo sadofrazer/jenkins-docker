@@ -1,0 +1,9 @@
+# Jenkins system configuration
+JENKINS_HOME=/usr/local/jenkins
+JENKINS_USER=jenkins
+JENKINS_LOG=/home/jenkins/jenkins.log
+JENKINS_JAVA=/usr/bin/java
+JENKINS_JAVAOPTS=""
+JENKINS_IP=0.0.0.0
+JENKINS_PORT=8080
+JENKINS_ARGS=""

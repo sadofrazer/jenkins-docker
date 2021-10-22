@@ -26,12 +26,24 @@ VOLUME [ “/sys/fs/cgroup” ]
 RUN mkdir /jenkins
 COPY . /jenkins
 RUN sh /jenkins/jenkins-install.sh
-RUN systemctl enable jenkins
 RUN cp /jenkins/jenkins.conf /etc/nginx/conf.d/jenkins.conf
-VOLUME /var/lib/jenkins
-RUN systemctl enable nginx.service
 EXPOSE 80
 EXPOSE 8080
-COPY start.sh start.sh
+
+#Copy Script files
+COPY start-jenkins.sh /usr/local/jenkins/start-jenkins.sh
+COPY start-jenkins.sh /usr/local/jenkins/start-jenkins.sh
+COPY jenkins /etc/init.d/jenkins
+COPY sysconfig /etc/sysconfig/jenkins
+
+VOLUME /var/lib/jenkins
+VOLUME /usr/local/jenkins 
+
+RUN chmod a+x /usr/local/jenkins/start-jenkins.sh && \
+chmod a+x /usr/local/jenkins/stop-jenkins.sh &&\
+chmod a+x /etc/init.d/jenkins
+
+RUN systemctl enable jenkins
+RUN systemctl enable nginx.service
 
 CMD ["/usr/sbin/init"]
