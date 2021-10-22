@@ -39,7 +39,8 @@ COPY sysconfig /etc/sysconfig/jenkins
 
 VOLUME /var/lib/jenkins
 VOLUME /usr/local/jenkins 
-
+RUN cd /usr/local/jenkins
+RUN wget http://mirrors.jenkins-ci.org/war/latest/jenkins.war
 RUN chmod a+x /usr/local/jenkins/start-jenkins.sh && \
 chmod a+x /usr/local/jenkins/stop-jenkins.sh &&\
 chmod a+x /etc/init.d/jenkins

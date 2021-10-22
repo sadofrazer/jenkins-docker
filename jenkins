@@ -6,11 +6,11 @@
 # Source function library.
 . /etc/rc.d/init.d/functions
  
-# Get network sysconfig.
-. /etc/sysconfig/network
+# # Get network sysconfig.
+# . /etc/sysconfig/network
  
-# Check that networking is up, otherwise we can't start
-[ "${NETWORKING}" = "no" ] && exit 0
+# # Check that networking is up, otherwise we can't start
+# [ "${NETWORKING}" = "no" ] && exit 0
  
 # Get the Jenkins sysconfig
 [ -f /etc/sysconfig/jenkins ] && . /etc/sysconfig/jenkins
