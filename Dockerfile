@@ -31,17 +31,17 @@ EXPOSE 80
 EXPOSE 8080
 
 #Copy Script files
-COPY start-jenkins.sh /usr/local/jenkins/start-jenkins.sh
-COPY start-jenkins.sh /usr/local/jenkins/start-jenkins.sh
-COPY stop-jenkins.sh /usr/local/jenkins/stop-jenkins.sh
+#COPY start-jenkins.sh /usr/local/jenkins/start-jenkins.sh
+#COPY start-jenkins.sh /usr/local/jenkins/start-jenkins.sh
+#COPY stop-jenkins.sh /usr/local/jenkins/stop-jenkins.sh
 #COPY jenkins /etc/init.d/jenkins
-COPY sysconfig /etc/sysconfig/jenkins
+#COPY sysconfig /etc/sysconfig/jenkins
 
 VOLUME /var/lib/jenkins
 VOLUME /usr/local/jenkins 
-RUN chmod a+x /usr/local/jenkins/start-jenkins.sh && \
-chmod a+x /usr/local/jenkins/stop-jenkins.sh &&\
-chmod a+x /etc/init.d/jenkins
+#RUN chmod a+x /usr/local/jenkins/start-jenkins.sh && \
+#chmod a+x /usr/local/jenkins/stop-jenkins.sh &&\
+#chmod a+x /etc/init.d/jenkins
 RUN cp /jenkins/jenkins.war /usr/local/jenkins/jenkins.war
 #RUN sh /usr/local/jenkins/start-jenkins.sh
 RUN systemctl enable nginx.service
