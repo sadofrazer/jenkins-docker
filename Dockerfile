@@ -26,7 +26,7 @@ VOLUME [ “/sys/fs/cgroup” ]
 RUN mkdir /jenkins
 COPY . /jenkins
 RUN sh /jenkins/jenkins-install.sh
-RUN systemctl enable jenkins.service
+RUN systemctl enable jenkins
 RUN cp /jenkins/jenkins.conf /etc/nginx/conf.d/jenkins.conf
 VOLUME /var/lib/jenkins
 RUN systemctl enable nginx.service
