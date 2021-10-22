@@ -12,7 +12,7 @@ RUN curl -fsSL https://get.docker.com/ | sh
 RUN mkdir /jenkins
 COPY . /jenkins
 RUN sh /jenkins/jenkins-install.sh
-RUN cp jenkins.conf /etc/nginx/conf.d/jenkins.conf
+RUN cp /jenkins/jenkins.conf /etc/nginx/conf.d/jenkins.conf
 VOLUME /var/lib/jenkins
 RUN systemctl start nginx
 RUN systemctl enable nginx
