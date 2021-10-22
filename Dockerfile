@@ -10,7 +10,7 @@ RUN curl -sL https://rpm.nodesource.com/setup_10.x | bash - \
 #install docker
 RUN curl -fsSL https://get.docker.com/ | sh
 
-RENV container=docker
+ENV container=docker
 
 RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == systemd-tmpfiles-setup.service ] || rm -f $i; done); \
 rm -f /lib/systemd/system/multi-user.target.wants/*;\
