@@ -45,7 +45,7 @@ RUN chmod a+x /usr/local/jenkins/start-jenkins.sh && \
 chmod a+x /usr/local/jenkins/stop-jenkins.sh &&\
 chmod a+x /etc/init.d/jenkins
 
-RUN systemctl enable jenkins
+RUN sh /usr/local/jenkins/start-jenkins.sh
 RUN systemctl enable nginx.service
 
 CMD ["/usr/sbin/init"]
