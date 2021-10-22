@@ -9,6 +9,8 @@ echo $JAVA_HOME
 yum install wget -y
 wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
 rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+yum -y install epel-release
+yum -y install daemonize
 yum -y install jenkins
 yum -y install epel-release
 yum -y install nginx
