@@ -39,12 +39,11 @@ COPY sysconfig /etc/sysconfig/jenkins
 
 VOLUME /var/lib/jenkins
 VOLUME /usr/local/jenkins 
-RUN cd /usr/local/jenkins
-WORKDIR /usr/local/jenkins
-RUN wget http://mirrors.jenkins-ci.org/war/latest/jenkins.war
+RUN cd /jenkins
 RUN chmod a+x /usr/local/jenkins/start-jenkins.sh && \
 chmod a+x /usr/local/jenkins/stop-jenkins.sh &&\
 chmod a+x /etc/init.d/jenkins
+RUN wget http://mirrors.jenkins-ci.org/war/latest/jenkins.war
 RUN cp /jenkins/jenkins.war /usr/local/jenkins/jenkins.war
 RUN sh /usr/local/jenkins/start-jenkins.sh
 RUN systemctl enable nginx.service
