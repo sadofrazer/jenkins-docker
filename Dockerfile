@@ -10,25 +10,28 @@ RUN curl -sL https://rpm.nodesource.com/setup_10.x | bash - \
 #install docker
 RUN curl -fsSL https://get.docker.com/ | sh
 
-RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in ; do [ $i == systemd-tmpfiles-setup.service ] || rm -f $i; done);
+RENV container=docker
 
-RUN rm -rf /lib/systemd/system/multi-user.target.wants/ \
-    && rm -rf /etc/systemd/system/.wants/ \
-    && rm -rf /lib/systemd/system/local-fs.target.wants/ \
-    && rm -f /lib/systemd/system/sockets.target.wants/udev \
-    && rm -f /lib/systemd/system/sockets.target.wants/initctl \
-    && rm -rf /lib/systemd/system/basic.target.wants/ \
-    && rm -f /lib/systemd/system/anaconda.target.wants/*
+RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == systemd-tmpfiles-setup.service ] || rm -f $i; done); \
+rm -f /lib/systemd/system/multi-user.target.wants/*;\
+rm -f /etc/systemd/system/*.wants/*;\
+rm -f /lib/systemd/system/local-fs.target.wants/*; \
+rm -f /lib/systemd/system/sockets.target.wants/*udev*; \
+rm -f /lib/systemd/system/sockets.target.wants/*initctl*; \
+rm -f /lib/systemd/system/basic.target.wants/*;\
+rm -f /lib/systemd/system/anaconda.target.wants/*;
 
 VOLUME [ “/sys/fs/cgroup” ]
 
 RUN mkdir /jenkins
 COPY . /jenkins
 RUN sh /jenkins/jenkins-install.sh
+RUN systemctl enable jenkins.service
 RUN cp /jenkins/jenkins.conf /etc/nginx/conf.d/jenkins.conf
 VOLUME /var/lib/jenkins
-RUN systemctl start nginx
-RUN systemctl enable nginx
+RUN systemctl enable nginx.service
 EXPOSE 80
 EXPOSE 8080
-CMD ["/usr/sbin/init"]
+COPY start.sh start.sh
+
+CMD ["/bin/bash", "start.sh"]
