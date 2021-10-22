@@ -1,4 +1,4 @@
-FROM centos:centos7.9.2009
+FROM centos:7
 LABEL Name="Frazer SADO"
 LABEL email="sadofrazer@yahoo.fr"
 #Install Dependencies
