@@ -15,9 +15,9 @@ groupadd jenkins
 useradd -g jenkins jenkins
 sudo mkdir -p /usr/local/jenkins
 chown -R jenkins. /usr/local/jenkins
-cd /usr/local/jenkins
+cd /usr/local/jenkins/
 wget http://mirrors.jenkins-ci.org/war/latest/jenkins.war
-
+cp jenkins.war /jenkins/jenkins.war
 # wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
 # rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
 # yum -y install jenkins
