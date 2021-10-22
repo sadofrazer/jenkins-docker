@@ -14,8 +14,8 @@ COPY . /jenkins
 RUN sh /jenkins/jenkins-install.sh
 RUN cp /jenkins/jenkins.conf /etc/nginx/conf.d/jenkins.conf
 VOLUME /var/lib/jenkins
-RUN systemctl start nginx
-RUN systemctl enable nginx
+#RUN systemctl start nginx
+#RUN systemctl enable nginx
 EXPOSE 80
 EXPOSE 8080
 ENTRYPOINT ["/usr/sbin/nginx", "-g", "daemon off;"]
