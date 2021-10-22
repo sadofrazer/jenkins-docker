@@ -33,6 +33,7 @@ EXPOSE 8080
 #Copy Script files
 COPY start-jenkins.sh /usr/local/jenkins/start-jenkins.sh
 COPY start-jenkins.sh /usr/local/jenkins/start-jenkins.sh
+COPY stop-jenkins.sh /usr/local/jenkins/stop-jenkins.sh
 COPY jenkins /etc/init.d/jenkins
 COPY sysconfig /etc/sysconfig/jenkins
 
